@@ -17,6 +17,13 @@ export default async function handler(request, response) {
       console.log(error);
       response.status(500).json({ status: "Internal Server Error" });
     }
+  } else if (request.method === "DELETE") {
+    try {
+      await BlogPost.findByIdAndDelete(id);
+      response.status(200).json({ status: `Post ${id} successfully deleted.` });
+    } catch (error) {
+      response.status(500).json({ status: "Internal Server Error" });
+    }
   } else {
     return response.status(405).json({ message: "Method not allowed" });
   }
