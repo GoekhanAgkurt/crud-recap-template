@@ -7,7 +7,6 @@ export default async function handler(request, response) {
   if (request.method === "GET") {
     try {
       const blogPosts = await BlogPost.find();
-      console.log(blogPosts);
 
       return response.status(200).json(blogPosts);
     } catch (error) {
