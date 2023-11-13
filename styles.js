@@ -23,7 +23,12 @@ export default createGlobalStyle`
 
   body {
     margin: 0;
+    background: black;
+    color: white;
+    text-align: center;
   }
+
+  
 
   #__next {
     display: flex;
@@ -31,6 +36,10 @@ export default createGlobalStyle`
     gap: 1rem;
     min-height: 100vh;
   }
+
+  ul {list-style: none}
+  li {padding: 0}
+
 `;
 
 export const colors = {

@@ -1,5 +1,6 @@
 import useSWR from "swr";
 import Link from "next/link";
+import styled from "styled-components";
 
 export default function HomePage() {
   const { data: blogPosts, isLoading } = useSWR("/api/blogposts");
@@ -13,15 +14,24 @@ export default function HomePage() {
       <Link href="/create">Create blog post</Link>
       <ul>
         {blogPosts.map((blogPost) => (
-          <li key={blogPost._id}>
+          <StyledListPost key={blogPost._id}>
             <h2>{blogPost.title}</h2>
             <p>Date: {blogPost.date}</p>
             <p>Author Name: {blogPost.authorName}</p>
             {/* <p>Blog Post: {blogPost.text}</p> */}
             <Link href={`/blogposts/${blogPost._id}`}> Blog post text</Link>
-          </li>
+          </StyledListPost>
         ))}
       </ul>
     </div>
   );
 }
+
+const StyledListPost = styled.li`
+  background-color: grey;
+  color: white;
+  padding: 20px;
+  margin: 10px;
+  width: 90%;
+  border-radius: 10px;
+`;
